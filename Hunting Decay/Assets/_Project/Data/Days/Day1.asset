@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1aedb36125f514885767497710e5bb, type: 3}
+  m_Name: Day1
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayData
+  hasBreakfast: 0
+  breakfastHealthy:
+    greeting: []
+    villageNews: []
+  breakfastInfected:
+    greeting: []
+    villageNews: []
+  huntRequest: []
+  scopeNote: You have 1 bullet
+  dinnerHealthy:
+    question:
+    - speaker: Daughter
+      text: You're back! I kept the stew warm.
+    - speaker: Daughter
+      text: How was the forest today, Papa?
+    replies:
+    - text: Quiet. Too quiet.
+      reaction:
+      - speaker: Daughter
+        text: Quiet is good, right? Quiet means nothing is chasing you.
+    - text: I saw something I can't explain.
+      reaction:
+      - speaker: Daughter
+        text: Like a ghost?
+      - speaker: Daughter
+        text: ...Tell me tomorrow. You look tired.
+  dinnerInfected:
+    question:
+    - speaker: Daughter
+      text: You're back.
+    - speaker: Daughter
+      text: I'm not very hungry tonight, Papa.
+    replies:
+    - text: Are you feeling alright?
+      reaction:
+      - speaker: Daughter
+        text: Just tired. My arm itches a little.
+    - text: Eat anyway. You need your strength.
+      reaction:
+      - speaker: Daughter
+        text: I'll try. It tastes... green, somehow.
+  missedNews: []
+  colorFilter: {r: 1, g: 0.94, b: 0.84, a: 1}
+  temperature: 25
+  saturation: 5
+  postExposure: 0
+  weather: 1
+  weatherRate: 14
+  music: {fileID: 0}
+  forestAmbience: {fileID: 11400000, guid: b26aa7a3ca111694fbda2beacdfe3832, type: 2}

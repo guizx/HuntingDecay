@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1aedb36125f514885767497710e5bb, type: 3}
+  m_Name: Day2
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayData
+  hasBreakfast: 1
+  breakfastHealthy:
+    greeting:
+    - speaker: Daughter
+      text: Morning, Papa! I already set the table.
+    - speaker: Daughter
+      text: Will you tell me a story about the forest tonight? A scary one.
+    villageNews:
+    - speaker: Daughter
+      text: Hollis came by. He's in such a good mood.
+    - speaker: Daughter
+      text: He wants more meat to salt before the river freezes.
+  breakfastInfected:
+    greeting:
+    - speaker: Daughter
+      text: Morning, Papa.
+    - speaker: Daughter
+      text: I didn't sleep. My skin feels tight, like bark.
+    villageNews:
+    - speaker: Daughter
+      text: Old Greer is worried about a fever going around.
+    - speaker: Daughter
+      text: And Hollis keeps coughing. There's moss on his hands.
+  huntRequest:
+  - speaker: Daughter
+    text: The kids at the mill saw a figure in the trees yesterday.
+  - speaker: Daughter
+    text: Tall, and standing very still. Please be careful.
+  scopeNote: Shoot an anomaly if present.\nIf not, hunt the deer.
+  dinnerHealthy:
+    question:
+    - speaker: Daughter
+      text: You smell like pine needles.
+    - speaker: Daughter
+      text: Did you find what the kids saw?
+    replies:
+    - text: It won't scare anyone again.
+      reaction:
+      - speaker: Daughter
+        text: Good. I'll tell them tomorrow.
+      - speaker: Daughter
+        text: They'll think you're a hero.
+    - text: Just an old tree. Eat your stew.
+      reaction:
+      - speaker: Daughter
+        text: An old tree...
+      - speaker: Daughter
+        text: You make the same face Mama made when she was hiding something.
+  dinnerInfected:
+    question:
+    - speaker: Daughter
+      text: You're back.
+    - speaker: Daughter
+      text: Sorry, I couldn't finish cooking. My hands won't stop shaking.
+    replies:
+    - text: Let me see your hands.
+      reaction:
+      - speaker: Daughter
+        text: Don't look. Please.
+      - speaker: Daughter
+        text: It's just the green again.
+    - text: Sit down. I'll finish it.
+      reaction:
+      - speaker: Daughter
+        text: Thank you, Papa.
+      - speaker: Daughter
+        text: You always take care of everything.
+  missedNews:
+  - speaker: Daughter
+    text: Old Greer came to the door today. She looked scared.
+  - speaker: Daughter
+    text: She says Hollis is coughing, and there's moss growing on his hands.
+  - speaker: Daughter
+    text: She called it the Bloom.
+  colorFilter: {r: 1, g: 0.95, b: 0.88, a: 1}
+  temperature: 15
+  saturation: -5
+  postExposure: 0
+  weather: 1
+  weatherRate: 8
+  music: {fileID: 0}
+  forestAmbience: {fileID: 11400000, guid: b26aa7a3ca111694fbda2beacdfe3832, type: 2}

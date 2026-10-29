@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1aedb36125f514885767497710e5bb, type: 3}
+  m_Name: Day3
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayData
+  hasBreakfast: 1
+  breakfastHealthy:
+    greeting:
+    - speaker: Daughter
+      text: Morning! Can you tell me the story of the white stag tonight?
+    villageNews:
+    - speaker: Daughter
+      text: Hollis says the smokehouse is almost full.
+    - speaker: Daughter
+      text: I heard Dr Marsh whistling all the way down the road.
+  breakfastInfected:
+    greeting:
+    - speaker: Daughter
+      text: Morning, Papa.
+    - speaker: Daughter
+      text: There's something under my skin, here. Like little roots.
+    villageNews:
+    - speaker: Daughter
+      text: Old Greer says half the village has the fever now.
+    - speaker: Daughter
+      text: Hollis coughed up a leaf. A whole green leaf.
+  huntRequest:
+  - speaker: Daughter
+    text: The forest feels wrong today. Even the birds are quiet.
+  - speaker: Daughter
+    text: Be careful, please.
+  - speaker: Daughter
+    text: If everything is alright out there, could we have deer again?
+  scopeNote: 
+  dinnerHealthy:
+    question:
+    - speaker: Daughter
+      text: Dr Marsh stopped by on his way home. His basket was full.
+    - speaker: Daughter
+      text: How was your day?
+    replies:
+    - text: Long. But we have meat for the week.
+      reaction:
+      - speaker: Daughter
+        text: Hollis will be so happy.
+      - speaker: Daughter
+        text: Can I have the biggest piece?
+    - text: The forest is changing. I don't like it.
+      reaction:
+      - speaker: Daughter
+        text: Then stay home tomorrow.
+      - speaker: Daughter
+        text: With me.
+  dinnerInfected:
+    question:
+    - speaker: Daughter
+      text: You're home.
+    - speaker: Daughter
+      text: The stew is cold. I fell asleep at the table.
+    replies:
+    - text: You need to rest.
+      reaction:
+      - speaker: Daughter
+        text: I rest all day. I'm still tired.
+    - text: I'll warm it up. Go to bed.
+      reaction:
+      - speaker: Daughter
+        text: Will you leave the lamp on?
+      - speaker: Daughter
+        text: The roots don't like the light.
+  missedNews:
+  - speaker: Daughter
+    text: Dr Marsh went into the forest but never came back.
+  - speaker: Daughter
+    text: Old Greer says without him, nobody knows how to stop the fever.
+  colorFilter: {r: 0.96, g: 0.96, b: 0.94, a: 1}
+  temperature: 0
+  saturation: -15
+  postExposure: -0.05
+  weather: 1
+  weatherRate: 3
+  music: {fileID: 0}
+  forestAmbience: {fileID: 11400000, guid: b26aa7a3ca111694fbda2beacdfe3832, type: 2}

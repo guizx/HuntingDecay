@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1aedb36125f514885767497710e5bb, type: 3}
+  m_Name: Day4
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayData
+  hasBreakfast: 1
+  breakfastHealthy:
+    greeting:
+    - speaker: Daughter
+      text: Morning! I dreamed about Mama. She was singing.
+    villageNews:
+    - speaker: Daughter
+      text: Hollis gave me a bone for the stew.
+    - speaker: Daughter
+      text: He says Hollow Pine will make it through the winter.
+  breakfastInfected:
+    greeting:
+    - speaker: Daughter
+      text: Morning...
+    - speaker: Daughter
+      text: The roots reached my neck. I covered them with Mama's scarf.
+    villageNews:
+    - speaker: Daughter
+      text: The fever is in every house now.
+    - speaker: Daughter
+      text: Greer won't open her door anymore.
+  huntRequest:
+  - speaker: Daughter
+    text: Papa... something keeps calling me from the woods. At night.
+  - speaker: Daughter
+    text: It knows my name.
+  - speaker: Daughter
+    text: Please hunt today. And come back.
+  dinnerHealthy:
+    question:
+    - speaker: Daughter
+      text: The voice stopped tonight.
+    - speaker: Daughter
+      text: Did you do something?
+    replies:
+    - text: I took care of it.
+      reaction:
+      - speaker: Daughter
+        text: I knew you would.
+      - speaker: Daughter
+        text: You always do.
+    - text: Don't go into the woods. Promise me.
+      reaction:
+      - speaker: Daughter
+        text: I promise.
+      - speaker: Daughter
+        text: ...I still hear it sometimes. Very quietly.
+  dinnerInfected:
+    question:
+    - speaker: Daughter
+      text: You're late.
+    - speaker: Daughter
+      text: Someone knocked on the door three times. Nobody was there.
+    replies:
+    - text: Lock the door tonight.
+      reaction:
+      - speaker: Daughter
+        text: I did.
+      - speaker: Daughter
+        text: The roots opened it anyway.
+    - text: Come here. I'm home now.
+      reaction:
+      - speaker: Daughter
+        text: You're so warm.
+      - speaker: Daughter
+        text: I'm cold all the time, Papa.
+  missedNews:
+  - speaker: Daughter
+    text: Someone was screaming near the cave today. Then it stopped.
+  - speaker: Daughter
+    text: The Pell boy went looking for his father.
+  - speaker: Daughter
+    text: Neither of them came home.
+  colorFilter: {r: 0.9, g: 0.95, b: 1, a: 1}
+  temperature: -20
+  saturation: -25
+  postExposure: -0.1
+  weather: 2
+  weatherRate: 18
+  music: {fileID: 0}
+  forestAmbience: {fileID: 0}

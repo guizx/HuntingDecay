@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1aedb36125f514885767497710e5bb, type: 3}
+  m_Name: Day5
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayData
+  hasBreakfast: 1
+  breakfastHealthy:
+    greeting:
+    - speaker: 
+      text: Her chair is empty. Last night's stew is untouched.
+    - speaker: 
+      text: The door is open. Small footprints lead into the snow, toward the lake.
+    villageNews: []
+  breakfastInfected:
+    greeting:
+    - speaker: 
+      text: Her chair is empty. There are pale petals on her pillow.
+    - speaker: 
+      text: The door is open. Small footprints lead into the snow, toward the lake.
+    villageNews: []
+  huntRequest: []
+  dinnerHealthy:
+    question: []
+    replies: []
+  dinnerInfected:
+    question: []
+    replies: []
+  missedNews: []
+  colorFilter: {r: 0.85, g: 0.92, b: 1, a: 1}
+  temperature: -40
+  saturation: -35
+  postExposure: -0.2
+  weather: 2
+  weatherRate: 45
+  music: {fileID: 0}
+  forestAmbience: {fileID: 0}

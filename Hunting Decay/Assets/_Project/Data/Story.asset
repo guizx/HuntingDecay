@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35f8ea9ad103914ea5dfa9a0d69270d, type: 3}
+  m_Name: Story
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.StoryData
+  days:
+  - {fileID: 11400000, guid: 2fefc1bdb205a2148ad5f239d20e27c1, type: 2}
+  - {fileID: 11400000, guid: ac05f5b1bd9b18f4980fc7728986f00d, type: 2}
+  - {fileID: 11400000, guid: 7808d2eaa075c2b459e1f0cd6b4d174c, type: 2}
+  - {fileID: 11400000, guid: b71b10a988794c34889138043ad1fff3, type: 2}
+  - {fileID: 11400000, guid: 04168c5586530c746921467d03058e5b, type: 2}
+  lastDinner:
+    question:
+    - speaker: Daughter
+      text: You came home.
+    - speaker: Daughter
+      text: Papa, it's so quiet.
+    - speaker: Daughter
+      text: I knocked on Greer's door. On Hollis's door. Nobody answered.
+    - speaker: Daughter
+      text: Where did everyone go?
+    replies:
+    - text: They're sleeping. Everyone is just sleeping.
+      reaction:
+      - speaker: Daughter
+        text: Then I'll sleep too.
+      - speaker: Daughter
+        text: Will you stay with me?
+    - text: I don't know.
+      reaction:
+      - speaker: Daughter
+        text: It's alright.
+      - speaker: Daughter
+        text: The flowers told me it won't hurt.
+  happyWinter:
+  - speaker: 
+    text: The plant withers, petal by petal, and the wolf runs into the trees.
+  - speaker: 
+    text: I carry her home through the snow. She sleeps the whole way.
+  - speaker: 
+    text: Hollow Pine makes it through the winter. In spring, every chimney is still
+      smoking.
+  happyWinterWithLoss:
+  - speaker: 
+    text: The plant withers, petal by petal, and the wolf runs into the trees.
+  - speaker: 
+    text: I carry her home through the snow. She sleeps the whole way.
+  - speaker: 
+    text: Hollow Pine makes it through the winter. But some of the houses never light
+      their stoves again.
+  witheringWolf:
+  - speaker: 
+    text: The wolf falls without a sound.
+  - speaker: 
+    text: Then the vines move. They wrap around her and pull her into the flowers.
+  - speaker: 
+    text: I go in after her. Neither of us comes back.
+  witheringDecoy:
+  - speaker: 
+    text: The shot echoes over the lake. The wolf doesn't even flinch.
+  - speaker: 
+    text: Then the vines move. They wrap around her and pull her into the flowers.
+  - speaker: 
+    text: I go in after her. Neither of us comes back.
+  endOfHollowPine:
+  - speaker: 
+    text: Winter is silent in Hollow Pine.
+  - speaker: 
+    text: No smoke. No voices. Only flowers, growing through the floorboards.
+  - speaker: 
+    text: They found the house in spring, covered in pale blossoms. Nobody was inside.
+  dayCardFormat: Day {0}
+  theEnd: The End
+  bulletText: You have 1 bullet
+  shootPrompt: '[Left Click] Shoot'
+  aimHint: Hold Right Mouse to aim
+  shootHint: Left Click to shoot
