@@ -53,6 +53,7 @@ namespace HuntingDecay
         [Range(0f, 1f)] public float foliageWhiten;
         public Weather weather;
         [Min(0f)] public float weatherRate = 15f;
+        [Tooltip("Plays only in the forest photos. The house's music depends on the Bloom, see the Story asset.")]
         public Sound music;
         [Tooltip("Plays only in the forest photos.")]
         public Sound forestAmbience;

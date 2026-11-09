@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.HouseView
   background: {fileID: 2606098242344465520}
+  ambience: {fileID: 0}
   breakfast:
     root: {fileID: 8759149665501375335}
     background: {fileID: 2606098242344465520}
@@ -458,6 +459,7 @@ GameObject:
   - component: {fileID: 7847535499953277180}
   - component: {fileID: 1168503997084703395}
   - component: {fileID: 5975760031908576502}
+  - component: {fileID: 5617601028055539251}
   m_Layer: 0
   m_Name: Daughter
   m_TagString: Untagged
@@ -569,6 +571,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayVisibility
   days: 01000000020000000300000004000000
+--- !u!114 &5617601028055539251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997503309804479865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93665d0293a35e41a8bd7c1a502651b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.BloomTwitch
+  fromMissedAnomalies: 1
+  pixels: 5
+  secondsBetween: {x: 0.8, y: 2.5}
+  jerks: {x: 1, y: 3}
+  jerkSeconds: 0.05
 --- !u!1 &4150341181071185337
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +665,7 @@ GameObject:
   - component: {fileID: 3780873008253607899}
   - component: {fileID: 4820279690181964310}
   - component: {fileID: 7186310767364947557}
+  - component: {fileID: 707675598042613876}
   m_Layer: 0
   m_Name: Daughter
   m_TagString: Untagged
@@ -757,6 +777,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.DayVisibility
   days: 01000000020000000300000004000000
+--- !u!114 &707675598042613876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503422842952706678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93665d0293a35e41a8bd7c1a502651b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.BloomTwitch
+  fromMissedAnomalies: 1
+  pixels: 5
+  secondsBetween: {x: 0.8, y: 2.5}
+  jerks: {x: 1, y: 3}
+  jerkSeconds: 0.05
 --- !u!1 &6566226509395003959
 GameObject:
   m_ObjectHideFlags: 0

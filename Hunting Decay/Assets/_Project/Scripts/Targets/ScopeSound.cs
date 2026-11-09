@@ -4,7 +4,7 @@ namespace HuntingDecay
 {
     /// <summary>
     /// Plays a sound the first time each day the scope lands on this target, like an anomaly's scare,
-    /// Dr Marsh's gasp or the wolf's growl.
+    /// Dr. Marsh's gasp or the wolf's growl.
     /// </summary>
     public class ScopeSound : MonoBehaviour, IDayStateListener
     {

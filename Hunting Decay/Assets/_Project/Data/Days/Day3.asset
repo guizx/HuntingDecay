@@ -21,7 +21,7 @@ MonoBehaviour:
     - speaker: Daughter
       text: Hollis says the smokehouse is almost ready for winter.
     - speaker: Daughter
-      text: I heard Dr Marsh whistling all the way down the road.
+      text: I heard Dr. Marsh whistling all the way down the road.
   breakfastInfected:
     greeting:
     - speaker: Daughter
@@ -30,7 +30,7 @@ MonoBehaviour:
       text: There's something wrong with me. Help me, please.
     villageNews:
     - speaker: Daughter
-      text: Half the village has the fever now. Dr Marsh disappeared.
+      text: Half the village has the fever now. Dr. Marsh disappeared.
     - speaker: Daughter
       text: Do we have the bloom, papa?
     - speaker: Daughter
@@ -45,7 +45,7 @@ MonoBehaviour:
   dinnerHealthy:
     question:
     - speaker: Daughter
-      text: Dr Marsh stopped by on his way home. His basket was full.
+      text: Dr. Marsh stopped by on his way home. His basket was full.
     - speaker: Daughter
       text: How was your day?
     replies:
@@ -82,7 +82,7 @@ MonoBehaviour:
         text: The roots don't like you.
   missedNews:
   - speaker: Daughter
-    text: Dr Marsh went into the forest but never came back.
+    text: Dr. Marsh went into the forest but never came back.
   - speaker: Daughter
     text: Old Greer says without him, nobody knows how to stop the fever.
   - speaker: Daughter

@@ -21,7 +21,7 @@ MonoBehaviour:
       text: Some weird things happened.
     villageNews:
     - speaker: Daughter
-      text: Hollis came by. He's a little sick, but he says Dr Marsh is taking care
+      text: Hollis came by. He's a little sick, but he says Dr. Marsh is taking care
         of him.
     - speaker: Daughter
       text: He wants more meat to salt before the river freezes.
@@ -93,7 +93,7 @@ MonoBehaviour:
   - speaker: Daughter
     text: Hollis is coughing, and there's moss growing on his hands.
   - speaker: Daughter
-    text: Dr Marsh is trying his best.
+    text: Dr. Marsh is trying his best.
   colorFilter: {r: 1, g: 0.95, b: 0.88, a: 1}
   temperature: 15
   saturation: -5

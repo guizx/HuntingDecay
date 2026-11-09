@@ -60,7 +60,6 @@ namespace HuntingDecay
             today = day;
             SetGrade(day.colorFilter, day.temperature, day.saturation, day.postExposure);
             SetFoliage(seasonalFoliage, day.foliageHue, day.foliageHueAmount, day.foliageSaturation, day.foliageWhiten);
-            AudioManager.Instance.PlayMusic(day.music);
         }
 
         /// <summary>Lifts the dark dinner photos. Breakfast and the endings keep their own levels.</summary>
@@ -96,6 +95,7 @@ namespace HuntingDecay
         {
             SetWeather(leaves, day.weather == Weather.Leaves, day.weatherRate);
             SetWeather(snow, day.weather == Weather.Snow, day.weatherRate);
+            AudioManager.Instance.PlayMusic(day.music);
             AudioManager.Instance.PlayAmbience(day.forestAmbience);
             randomSounds.Begin(day.randomSounds);
             if (day.customHuntGrade)

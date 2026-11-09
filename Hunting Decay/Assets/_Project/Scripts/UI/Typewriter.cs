@@ -14,16 +14,22 @@ namespace HuntingDecay
 
         float shown;
         int total;
+        int limit;
         int lettersUntilSound;
         bool needsCount;
         Sound voice;
 
         public bool IsTyping => needsCount || shown < total;
 
+        /// <summary>The time each letter takes, so a pause can match the typing rhythm.</summary>
+        public float LetterInterval => 1f / charactersPerSecond;
+
         /// <param name="voice">Typing sound for this text only, like a speaker's voice. Null uses the default.</param>
-        public void Play(string value, Sound voice = null)
+        /// <param name="stopAfter">Stops typing after this many characters, spaces included, as if cut off.</param>
+        public void Play(string value, Sound voice = null, int stopAfter = int.MaxValue)
         {
             this.voice = voice;
+            limit = stopAfter;
             text.text = value;
             text.maxVisibleCharacters = 0;
             shown = 0f;
@@ -69,7 +75,7 @@ namespace HuntingDecay
             if (!needsCount)
                 return;
             text.ForceMeshUpdate();
-            total = text.textInfo.characterCount;
+            total = Mathf.Min(text.textInfo.characterCount, limit);
             needsCount = false;
         }
     }

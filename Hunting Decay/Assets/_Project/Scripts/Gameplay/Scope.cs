@@ -8,6 +8,7 @@ namespace HuntingDecay
     /// shows the HUD and zooms the camera so the background is drawn at <see cref="zoom"/> screen pixels
     /// per texture pixel. The cursor's normalized screen position picks the same normalized point of the
     /// background, which is placed at the camera center (the aim point), plus a slow sway.
+    /// It can also shake the view, like a jolt when the daughter is first seen changed.
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public class Scope : MonoBehaviour
@@ -26,12 +27,21 @@ namespace HuntingDecay
         [Tooltip("How fast the aim drifts. Higher is shakier.")]
         [SerializeField, Min(0f)] float swaySpeed = 0.3f;
 
+        [Header("Shake")]
+        [Tooltip("Seconds between jolts. Lower is more frantic.")]
+        [SerializeField, Min(0.01f)] float shakeInterval = 0.04f;
+
         [SerializeField] InputAction aimAction = new("Aim", InputActionType.Button, "<Mouse>/rightButton");
 
         Camera cam;
         // 0 is the normal view, 1 is fully zoomed in.
         float zoomBlend;
         Vector2 lastCursor;
+        float shakeDuration;
+        float shakePixels;
+        float shakeTime;
+        float nextJolt;
+        Vector2 jolt;
 
         /// <summary>Set by the hunt. Everywhere else the camera only frames the photo.</summary>
         public bool AllowAiming { get; set; }
@@ -45,6 +55,15 @@ namespace HuntingDecay
         public Vector2 AimPoint => cam.transform.position;
 
         public void SetBackground(SpriteRenderer value) => background = value;
+
+        /// <summary>Jolts the view by up to pixels screen pixels, easing to rest over duration seconds.</summary>
+        public void Shake(float duration, float pixels)
+        {
+            shakeDuration = duration;
+            shakePixels = pixels;
+            shakeTime = 0f;
+            nextJolt = 0f;
+        }
 
         void Awake()
         {
@@ -74,26 +93,54 @@ namespace HuntingDecay
 
             Rect area = BackgroundRect();
             float fitSize = Mathf.Max(area.height, area.width / cam.aspect) * 0.5f;
+            float size;
+            Vector2 center;
             if (zoomBlend <= 0f)
             {
-                cam.orthographicSize = fitSize;
-                MoveTo(area.center);
-                return;
+                size = fitSize;
+                center = area.center;
             }
-
-            float texelsPerUnit = background.sprite.rect.height / area.height;
-            float aimSize = cam.pixelHeight / (2f * texelsPerUnit * zoom);
-            Vector2 aimCenter = AimCenter(area, aimSize);
-            if (zoomBlend >= 1f)
+            else
             {
-                cam.orthographicSize = aimSize;
-                MoveTo(SnapToPixels(aimCenter, area, aimSize));
-                return;
+                float texelsPerUnit = background.sprite.rect.height / area.height;
+                float aimSize = cam.pixelHeight / (2f * texelsPerUnit * zoom);
+                Vector2 aimCenter = AimCenter(area, aimSize);
+                if (zoomBlend >= 1f)
+                {
+                    size = aimSize;
+                    center = SnapToPixels(aimCenter, area, aimSize);
+                }
+                else
+                {
+                    float t = Mathf.SmoothStep(0f, 1f, zoomBlend);
+                    size = Mathf.Lerp(fitSize, aimSize, t);
+                    center = Vector2.Lerp(area.center, aimCenter, t);
+                }
             }
 
-            float t = Mathf.SmoothStep(0f, 1f, zoomBlend);
-            cam.orthographicSize = Mathf.Lerp(fitSize, aimSize, t);
-            MoveTo(Vector2.Lerp(area.center, aimCenter, t));
+            ApplyShake(ref size, ref center);
+            cam.orthographicSize = size;
+            MoveTo(center);
+        }
+
+        /// <summary>
+        /// Offsets the view by the current jolt. The view also zooms in by the full shake distance, so the
+        /// jolts never reach past the photo's edges.
+        /// </summary>
+        void ApplyShake(ref float size, ref Vector2 center)
+        {
+            if (shakeTime >= shakeDuration)
+                return;
+            shakeTime += Time.deltaTime;
+            float strength = shakePixels * (1f - Mathf.Clamp01(shakeTime / shakeDuration));
+            if (shakeTime >= nextJolt)
+            {
+                jolt = Random.insideUnitCircle;
+                nextJolt = shakeTime + shakeInterval;
+            }
+            float unitsPerPixel = 2f * size / cam.pixelHeight;
+            size -= strength * unitsPerPixel;
+            center += jolt * (strength * unitsPerPixel);
         }
 
         void SetAiming(bool aiming)

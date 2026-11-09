@@ -43,6 +43,18 @@ MonoBehaviour:
         text: It's alright.
       - speaker: Daughter
         text: I'll meet mama again.
+  missedAnomalyCard: You missed an an|omaly.
+  bloomJumpscare:
+    enabled: 1
+    image: {fileID: 21300000, guid: b696e1f4f616b8f4fb98d7b6588fa4a9, type: 3}
+    placeholderLabel: 
+    sounds:
+    - {fileID: 11400000, guid: 9872994c8d495e5478e4362b8684ca5b, type: 2}
+    - {fileID: 11400000, guid: e097566fbd3ea104d88d7805d0cc0a7d, type: 2}
+    zoom: 5.5
+    focus: {x: 0.519, y: 0.822}
+  infectedHouseMusic: {fileID: 11400000, guid: 81e2f1822bdb7154998c51418a010384, type: 2}
+  firstInfectedDinnerSound: {fileID: 11400000, guid: 1ea53577bb70beb45ac6929cc1496296, type: 2}
   happyWinter:
   - speaker: 
     text: The plant withered, petal by petal, and the wolf, being free from the control
@@ -122,11 +134,49 @@ MonoBehaviour:
     text: It's not human. It is the forest.
   - speaker: 
     text: And it already knows our scent.
+  endOfHollowPineCard:
+    good: 0
+    name: The End of Hollow Pine
+    number: 1
+    background: {fileID: 21300000, guid: b696e1f4f616b8f4fb98d7b6588fa4a9, type: 3}
+    zoom: 5.5
+    focus: {x: 0.519, y: 0.822}
+    brightness: 0.6
+  witheringCard:
+    good: 0
+    name: Withering
+    number: 2
+    background: {fileID: 21300000, guid: b7ca53ae218e5c14bbe870dd27154a85, type: 3}
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+    brightness: 0.7
+  bittersweetWinterCard:
+    good: 1
+    name: Bittersweet Winter
+    number: 3
+    background: {fileID: 21300000, guid: 302e9f6e5916768468a3b86e86b0d4e6, type: 3}
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+    brightness: 0.5
+  happyWinterCard:
+    good: 1
+    name: Happy Winter
+    number: 4
+    background: {fileID: 21300000, guid: 302e9f6e5916768468a3b86e86b0d4e6, type: 3}
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+    brightness: 0.5
+  badEndingLabel: 'Bad Ending:'
+  goodEndingLabel: 'Good Ending:'
+  endingCardFormat: '{0}
+
+    {1}
+
+    ({2} of {3})'
   titleLook: {fileID: 11400000, guid: 2fefc1bdb205a2148ad5f239d20e27c1, type: 2}
   titleMusic: {fileID: 11400000, guid: 81e2f1822bdb7154998c51418a010384, type: 2}
   plantEndingMusic: {fileID: 11400000, guid: ddebe5e058c5d6b4eaad1ba9858ababc, type: 2}
   badEndingMusic: {fileID: 11400000, guid: ca2030cd1d63a0c4bbdb77d9b0a60126, type: 2}
   dayCardFormat: Day {0}
-  theEnd: The End
   shootPrompt: '[Left Click] Shoot'
   aimHint: Hold Right Mouse to aim

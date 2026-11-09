@@ -11,6 +11,9 @@ namespace HuntingDecay
         [Tooltip("The empty house covered by the Bloom, for The End of Hollow Pine.")]
         [SerializeField] ViewVariant overgrown;
 
+        /// <summary>The house's damage strength, so the Bloom card can end on the same look as the dinner.</summary>
+        public float DamageOpacity => GetComponentInChildren<DamageOverlay>(true).Opacity;
+
         public void SetScene(HouseScene scene)
         {
             ViewVariant selected = scene switch

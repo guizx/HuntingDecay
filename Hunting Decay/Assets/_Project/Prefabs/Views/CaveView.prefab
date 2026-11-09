@@ -740,7 +740,10 @@ MonoBehaviour:
     enabled: 0
     image: {fileID: 0}
     placeholderLabel: 
-    sound: {fileID: 0}
+    sounds: []
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: 
 --- !u!114 &5013727436155442841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,7 +1244,10 @@ MonoBehaviour:
     enabled: 0
     image: {fileID: 0}
     placeholderLabel: 
-    sound: {fileID: 0}
+    sounds: []
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: 
 --- !u!114 &1049660867646954821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,7 +1375,11 @@ MonoBehaviour:
     enabled: 1
     image: {fileID: 21300000, guid: 68d29712a4fdd72429620045fc052c73, type: 3}
     placeholderLabel: WENDIGO FACE
-    sound: {fileID: 11400000, guid: 9872994c8d495e5478e4362b8684ca5b, type: 2}
+    sounds:
+    - {fileID: 11400000, guid: 9872994c8d495e5478e4362b8684ca5b, type: 2}
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: 
 --- !u!114 &3235428031462524265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,7 +2751,10 @@ MonoBehaviour:
     enabled: 0
     image: {fileID: 0}
     placeholderLabel: 
-    sound: {fileID: 0}
+    sounds: []
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: 
 --- !u!114 &8541664750322287541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3516,7 +3529,10 @@ MonoBehaviour:
     enabled: 0
     image: {fileID: 0}
     placeholderLabel: 
-    sound: {fileID: 0}
+    sounds: []
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: 
 --- !u!114 &3109579499134586176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3851,7 +3867,10 @@ MonoBehaviour:
     enabled: 0
     image: {fileID: 0}
     placeholderLabel: 
-    sound: {fileID: 0}
+    sounds: []
+    zoom: 1
+    focus: {x: 0.5, y: 0.5}
+  bloomCard: You shot Dr. M|arsh.
 --- !u!114 &7763134585969089841
 MonoBehaviour:
   m_ObjectHideFlags: 0

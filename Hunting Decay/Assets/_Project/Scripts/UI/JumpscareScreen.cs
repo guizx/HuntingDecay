@@ -7,7 +7,8 @@ namespace HuntingDecay
 {
     /// <summary>
     /// The face that jumps on screen. It sits on an opaque black backdrop and is drawn a little larger than
-    /// the screen, so the shake never shows the game underneath.
+    /// the screen, so the shake never shows the game underneath. It draws above the black screen, so it can
+    /// also cut into a card.
     /// </summary>
     public class JumpscareScreen : MonoBehaviour
     {
@@ -29,10 +30,12 @@ namespace HuntingDecay
             image.sprite = jumpscare.image;
             image.color = hasImage ? Color.white : placeholderColor;
             placeholderLabel.text = hasImage ? string.Empty : jumpscare.placeholderLabel;
-            root.SetActive(true);
-            AudioManager.Instance.Play(jumpscare.sound);
-
             RectTransform face = image.rectTransform;
+            UiFraming.Frame(face, jumpscare.zoom, jumpscare.focus);
+            root.SetActive(true);
+            foreach (Sound sound in jumpscare.sounds)
+                AudioManager.Instance.Play(sound);
+
             float end = Time.time + hold;
             float nextJolt = 0f;
             while (Time.time < end)

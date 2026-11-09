@@ -135,6 +135,7 @@ namespace HuntingDecay
                 return;
             int index = TakeVoice();
             AudioSource voice = effectVoices[index];
+            KeepFromFade(voice);
             voice.pitch = sound.PickPitch();
             voice.PlayOneShot(clip, sound.Volume);
             voiceEnds[index] = Time.unscaledTime + clip.length / Mathf.Abs(voice.pitch);
@@ -166,6 +167,7 @@ namespace HuntingDecay
             AudioClip clip = sound != null ? sound.PickClip() : null;
             if (clip == null)
                 return;
+            KeepFromFade(randomVoice);
             randomVoice.clip = clip;
             randomVoice.volume = sound.Volume;
             randomVoice.pitch = sound.PickPitch();
@@ -176,7 +178,8 @@ namespace HuntingDecay
 
         /// <summary>
         /// Fades out and stops whatever effects are still ringing, like a scope sound or the jumpscare,
-        /// so they don't carry into the next scene. Loops and the interface aren't touched.
+        /// so they don't carry into the next scene. Sounds started after the call play normally, so the next
+        /// scene can open with its own sound. Loops and the interface aren't touched.
         /// </summary>
         public void FadeOutEffects(float duration)
         {
@@ -190,22 +193,30 @@ namespace HuntingDecay
 
         IEnumerator FadeEffects(float duration)
         {
-            var voices = new List<AudioSource>(effectVoices) { randomVoice };
+            // Only the voices ringing now. KeepFromFade takes a voice back out when a new sound reuses it.
             effectVolumes.Clear();
-            foreach (AudioSource voice in voices)
-                effectVolumes[voice] = voice.volume;
+            foreach (AudioSource voice in new List<AudioSource>(effectVoices) { randomVoice })
+                if (voice.isPlaying)
+                    effectVolumes[voice] = voice.volume;
 
             for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
             {
                 float k = 1f - t / duration;
-                foreach (AudioSource voice in voices)
-                    voice.volume = effectVolumes[voice] * k;
+                foreach (KeyValuePair<AudioSource, float> pair in effectVolumes)
+                    pair.Key.volume = pair.Value * k;
                 yield return null;
             }
-            foreach (AudioSource voice in voices)
+            foreach (AudioSource voice in effectVolumes.Keys)
                 voice.Stop();
             RestoreEffectVolumes();
             fadingEffects = null;
+        }
+
+        /// <summary>A voice about to play a new sound leaves the fade, back at its own volume.</summary>
+        void KeepFromFade(AudioSource voice)
+        {
+            if (effectVolumes.Remove(voice, out float volume))
+                voice.volume = volume;
         }
 
         void RestoreEffectVolumes()
