@@ -16,13 +16,6 @@ namespace HuntingDecay
 
         public IEnumerator FadeFromBlack(float duration) => Fade(black, 0f, duration);
 
-        public IEnumerator Flash(float duration)
-        {
-            flash.alpha = 1f;
-            yield return new WaitForSeconds(duration);
-            flash.alpha = 0f;
-        }
-
         /// <summary>The shot: white that fades straight into black, so the scene never shows again.</summary>
         public IEnumerator FlashToBlack(float duration)
         {

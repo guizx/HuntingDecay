@@ -17,6 +17,7 @@ namespace HuntingDecay
             if (playedToday)
                 return;
             playedToday = true;
+            AudioManager.Instance.StopRandom();
             AudioManager.Instance.Play(sound);
         }
 

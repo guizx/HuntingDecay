@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ namespace HuntingDecay
         [Header("Loops")]
         [SerializeField] AudioSource music;
         [SerializeField] AudioSource ambience;
+        [Tooltip("The open photo's own loop, like the river, on top of the day's ambience.")]
+        [SerializeField] AudioSource photoAmbience;
         [SerializeField] AudioSource bloomHum;
         [SerializeField] AudioSource breathing;
         [Tooltip("A distant choir that grows louder with each missed anomaly.")]
@@ -28,10 +31,23 @@ namespace HuntingDecay
         [Tooltip("The Hunter's breathing while aiming.")]
         [SerializeField] Sound breathingSound;
 
+        [Header("Fades (seconds)")]
+        [Tooltip("How long the old music takes to fade out when the music changes or stops.")]
+        [SerializeField, Min(0f)] float musicFadeOut = 1.5f;
+        [Tooltip("How long new music takes to fade in. It overlaps the old one's fade out.")]
+        [SerializeField, Min(0f)] float musicFadeIn = 2.5f;
+        [Tooltip("Fade in and out for the ambience loops, like the birds or the river.")]
+        [SerializeField, Min(0f)] float ambienceFade = 1f;
+
         [Header("Effects")]
-        [Tooltip("Several sources so overlapping effects can each have their own pitch.")]
+        [Tooltip("Several sources so overlapping effects can each have their own pitch. "
+            + "A sound only takes a free one, so a playing sound is never retuned.")]
         [SerializeField] AudioSource[] effectVoices;
         [SerializeField] Subtitles subtitles;
+
+        [Header("Random sounds")]
+        [Tooltip("Its own source, so an anomaly sound can cut a random forest sound short.")]
+        [SerializeField] AudioSource randomVoice;
 
         [Header("Interface")]
         [Tooltip("Ignores the listener pause, so the pause menu still makes sounds.")]
@@ -47,8 +63,15 @@ namespace HuntingDecay
 
         // Which Sound each loop source is playing, so a new one replaces it and the same one keeps going.
         readonly Dictionary<AudioSource, Sound> loopSounds = new();
-        int nextVoice;
+        // Each voice's volume before a fade, put back once it has stopped.
+        readonly Dictionary<AudioSource, float> effectVolumes = new();
+        Coroutine fadingEffects;
+        // When each effect voice's current sound ends, so a full set gives up the one closest to done.
+        float[] voiceEnds;
         bool isBreathing;
+        CrossfadeLoop musicLoop;
+        CrossfadeLoop ambienceLoop;
+        CrossfadeLoop photoAmbienceLoop;
 
         public float MasterVolume => AudioListener.volume;
 
@@ -58,6 +81,17 @@ namespace HuntingDecay
             AudioListener.volume = PlayerPrefs.GetFloat(MasterVolumeKey, 1f);
             // Unity doesn't save this AudioSource setting with the scene, so it has to be set at runtime.
             interfaceVoice.ignoreListenerPause = true;
+            voiceEnds = new float[effectVoices.Length];
+            musicLoop = new CrossfadeLoop(music);
+            ambienceLoop = new CrossfadeLoop(ambience);
+            photoAmbienceLoop = new CrossfadeLoop(photoAmbience);
+        }
+
+        void Update()
+        {
+            musicLoop.Tick(Time.unscaledDeltaTime);
+            ambienceLoop.Tick(Time.unscaledDeltaTime);
+            photoAmbienceLoop.Tick(Time.unscaledDeltaTime);
         }
 
         public void SetMasterVolume(float volume)
@@ -66,9 +100,13 @@ namespace HuntingDecay
             PlayerPrefs.SetFloat(MasterVolumeKey, volume);
         }
 
-        public void PlayMusic(Sound sound) => PlayLoop(music, sound);
+        /// <summary>Crossfades to new music, or fades it out with null.</summary>
+        public void PlayMusic(Sound sound) => musicLoop.Play(sound, musicFadeOut, musicFadeIn);
 
-        public void PlayAmbience(Sound sound) => PlayLoop(ambience, sound);
+        public void PlayAmbience(Sound sound) => ambienceLoop.Play(sound, ambienceFade, ambienceFade);
+
+        /// <summary>The open photo's loop, like the river. Null fades it out.</summary>
+        public void PlayPhotoAmbience(Sound sound) => photoAmbienceLoop.Play(sound, ambienceFade, ambienceFade);
 
         public void SetBloom(int missedAnomalies) =>
             PlayLoop(bloomHum, bloomHumSound, bloomHumLevels[Mathf.Clamp(missedAnomalies, 0, bloomHumLevels.Length - 1)]);
@@ -95,10 +133,86 @@ namespace HuntingDecay
             AudioClip clip = sound != null ? sound.PickClip() : null;
             if (clip == null)
                 return;
-            AudioSource voice = effectVoices[nextVoice];
-            nextVoice = (nextVoice + 1) % effectVoices.Length;
+            int index = TakeVoice();
+            AudioSource voice = effectVoices[index];
             voice.pitch = sound.PickPitch();
             voice.PlayOneShot(clip, sound.Volume);
+            voiceEnds[index] = Time.unscaledTime + clip.length / Mathf.Abs(voice.pitch);
+        }
+
+        /// <summary>
+        /// A free voice, or else the one whose sound ends soonest, cut short. Pitch is per source, so reusing
+        /// a voice that's still playing would bend the sound it's playing, like an anomaly's scare.
+        /// </summary>
+        int TakeVoice()
+        {
+            int soonest = 0;
+            for (int i = 0; i < effectVoices.Length; i++)
+            {
+                if (!effectVoices[i].isPlaying)
+                    return i;
+                if (voiceEnds[i] < voiceEnds[soonest])
+                    soonest = i;
+            }
+            effectVoices[soonest].Stop();
+            return soonest;
+        }
+
+        /// <summary>True until a random forest sound ends or something cuts it short.</summary>
+        public bool IsRandomPlaying => randomVoice.isPlaying;
+
+        public void PlayRandom(Sound sound)
+        {
+            AudioClip clip = sound != null ? sound.PickClip() : null;
+            if (clip == null)
+                return;
+            randomVoice.clip = clip;
+            randomVoice.volume = sound.Volume;
+            randomVoice.pitch = sound.PickPitch();
+            randomVoice.Play();
+        }
+
+        public void StopRandom() => randomVoice.Stop();
+
+        /// <summary>
+        /// Fades out and stops whatever effects are still ringing, like a scope sound or the jumpscare,
+        /// so they don't carry into the next scene. Loops and the interface aren't touched.
+        /// </summary>
+        public void FadeOutEffects(float duration)
+        {
+            if (fadingEffects != null)
+            {
+                StopCoroutine(fadingEffects);
+                RestoreEffectVolumes();
+            }
+            fadingEffects = StartCoroutine(FadeEffects(duration));
+        }
+
+        IEnumerator FadeEffects(float duration)
+        {
+            var voices = new List<AudioSource>(effectVoices) { randomVoice };
+            effectVolumes.Clear();
+            foreach (AudioSource voice in voices)
+                effectVolumes[voice] = voice.volume;
+
+            for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
+            {
+                float k = 1f - t / duration;
+                foreach (AudioSource voice in voices)
+                    voice.volume = effectVolumes[voice] * k;
+                yield return null;
+            }
+            foreach (AudioSource voice in voices)
+                voice.Stop();
+            RestoreEffectVolumes();
+            fadingEffects = null;
+        }
+
+        void RestoreEffectVolumes()
+        {
+            foreach (KeyValuePair<AudioSource, float> pair in effectVolumes)
+                pair.Key.volume = pair.Value;
+            effectVolumes.Clear();
         }
 
         public void PlayHover() => PlayInterface(hoverSound);

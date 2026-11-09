@@ -31,6 +31,7 @@ namespace HuntingDecay
                 return;
             timer = interval;
             playedToday = true;
+            AudioManager.Instance.StopRandom();
             AudioManager.Instance.Play(sound, caption);
         }
 

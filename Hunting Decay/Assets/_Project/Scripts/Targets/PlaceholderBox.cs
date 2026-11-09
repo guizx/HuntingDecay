@@ -5,7 +5,7 @@ namespace HuntingDecay
 {
     /// <summary>
     /// Stand-in for cutout art: a tinted box with a name on it. When the art arrives, assign the sprites
-    /// (on the SpriteRenderer, ZoomReveal or DaughterCutout), then delete this component and its label.
+    /// (on the SpriteRenderer, ZoomReveal or BloomSprite), then delete this component and its label.
     /// </summary>
     public class PlaceholderBox : MonoBehaviour
     {

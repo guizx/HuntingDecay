@@ -16,80 +16,96 @@ MonoBehaviour:
   breakfastHealthy:
     greeting:
     - speaker: Daughter
-      text: Morning, Papa! I already set the table.
+      text: Morning, papa! Are you going to the forest today?
     - speaker: Daughter
-      text: Will you tell me a story about the forest tonight? A scary one.
+      text: Some weird things happened.
     villageNews:
     - speaker: Daughter
-      text: Hollis came by. He's in such a good mood.
+      text: Hollis came by. He's a little sick, but he says Dr Marsh is taking care
+        of him.
     - speaker: Daughter
       text: He wants more meat to salt before the river freezes.
+    - speaker: Daughter
+      text: But Old Greer is worried about a fever going around.
+    - speaker: Daughter
+      text: She's calling it the bloom.
+    - speaker: Daughter
+      text: And the kids keep coughing. There's some green stuff on their hands.
   breakfastInfected:
     greeting:
     - speaker: Daughter
-      text: Morning, Papa.
+      text: Morning, papa.
     - speaker: Daughter
       text: I didn't sleep. My skin feels tight, like bark.
     villageNews:
     - speaker: Daughter
-      text: Old Greer is worried about a fever going around.
+      text: But Old Greer is worried about a fever going around.
     - speaker: Daughter
-      text: And Hollis keeps coughing. There's moss on his hands.
+      text: And the kids keep coughing. There's some green stuff on their hands.
   huntRequest:
   - speaker: Daughter
-    text: The kids at the mill saw a figure in the trees yesterday.
+    text: They said they saw a figure in the trees, near some rags.
   - speaker: Daughter
-    text: Tall, and standing very still. Please be careful.
+    text: What's going on, papa? Hunt it, please!
   scopeNote: Shoot an anomaly if present.\nIf not, hunt the deer.
+  randomSounds: 1
   dinnerHealthy:
     question:
     - speaker: Daughter
-      text: You smell like pine needles.
-    - speaker: Daughter
-      text: Did you find what the kids saw?
+      text: Did you find anything?
     replies:
-    - text: It won't scare anyone again.
+    - text: It's gone now.
       reaction:
       - speaker: Daughter
-        text: Good. I'll tell them tomorrow.
+        text: Thank you, papa! I'll tell everyone tomorrow!
       - speaker: Daughter
-        text: They'll think you're a hero.
+        text: You're my hero!
     - text: Just an old tree. Eat your stew.
       reaction:
       - speaker: Daughter
-        text: An old tree...
+        text: This is bread stew...
       - speaker: Daughter
-        text: You make the same face Mama made when she was hiding something.
+        text: You make the same face mama made when she was hiding something.
   dinnerInfected:
     question:
     - speaker: Daughter
       text: You're back.
     - speaker: Daughter
-      text: Sorry, I couldn't finish cooking. My hands won't stop shaking.
+      text: Sorry, papa. I can't stop shaking.
     replies:
-    - text: Let me see your hands.
+    - text: What happened to you?
       reaction:
       - speaker: Daughter
-        text: Don't look. Please.
+        text: I think I got something from the forest.
       - speaker: Daughter
-        text: It's just the green again.
-    - text: Sit down. I'll finish it.
+        text: I don't know what this is, papa. I'm scared.
+    - text: I'll grab a blanket.
       reaction:
       - speaker: Daughter
-        text: Thank you, Papa.
+        text: Thank you, papa.
       - speaker: Daughter
-        text: You always take care of everything.
+        text: I'm sorry.
+      - speaker: Daughter
+        text: I don't want to go away like mama.
   missedNews:
   - speaker: Daughter
     text: Old Greer came to the door today. She looked scared.
   - speaker: Daughter
-    text: She says Hollis is coughing, and there's moss growing on his hands.
+    text: Hollis is coughing, and there's moss growing on his hands.
   - speaker: Daughter
-    text: She called it the Bloom.
+    text: Dr Marsh is trying his best.
   colorFilter: {r: 1, g: 0.95, b: 0.88, a: 1}
   temperature: 15
   saturation: -5
   postExposure: 0
+  customHuntGrade: 0
+  huntTemperature: 0
+  huntSaturation: 0
+  huntPostExposure: 0
+  foliageHue: 28
+  foliageHueAmount: 1
+  foliageSaturation: 1
+  foliageWhiten: 0
   weather: 1
   weatherRate: 8
   music: {fileID: 0}

@@ -23,16 +23,18 @@ MonoBehaviour:
     - speaker: Daughter
       text: You came home.
     - speaker: Daughter
-      text: Papa, it's so quiet.
+      text: Papa, I don't feel very well.
     - speaker: Daughter
       text: I knocked on Greer's door. On Hollis's door. Nobody answered.
     - speaker: Daughter
       text: Where did everyone go?
+    - speaker: Daughter
+      text: What will happen to us, papa?
     replies:
-    - text: They're sleeping. Everyone is just sleeping.
+    - text: They're sleeping.
       reaction:
       - speaker: Daughter
-        text: Then I'll sleep too.
+        text: I think I'll sleep too, papa. I'm so tired.
       - speaker: Daughter
         text: Will you stay with me?
     - text: I don't know.
@@ -40,47 +42,91 @@ MonoBehaviour:
       - speaker: Daughter
         text: It's alright.
       - speaker: Daughter
-        text: The flowers told me it won't hurt.
+        text: I'll meet mama again.
   happyWinter:
   - speaker: 
-    text: The plant withers, petal by petal, and the wolf runs into the trees.
+    text: The plant withered, petal by petal, and the wolf, being free from the control
+      of the bloom, ran into the trees.
   - speaker: 
-    text: I carry her home through the snow. She sleeps the whole way.
+    text: I applied first aid and carried my daughter home. She stayed asleep the
+      entire time.
   - speaker: 
-    text: Hollow Pine makes it through the winter. In spring, every chimney is still
-      smoking.
+    text: Hollow Pine was allowed a calm winter, knowing the plant was eradicated.
+  - speaker: 
+    text: I gained a pat on the back, some handshakes, and a lot of booze.
+  - speaker: 
+    text: But my daughter gave me a smile.
+  - speaker: 
+    text: A genuine one.
+  - speaker: 
+    text: The same one she used to give her mother.
+  - speaker: 
+    text: I started crying on the spot.
+  - speaker: 
+    text: Yes, yes... I know. Everyone made fun of me too.
+  - speaker: 
+    text: But it was all for that.
+  - speaker: 
+    text: To protect that smile.
+  - speaker: 
+    text: The best reward I could've ever received.
   happyWinterWithLoss:
   - speaker: 
-    text: The plant withers, petal by petal, and the wolf runs into the trees.
+    text: The plant withered, petal by petal, and the wolf, being free from the control
+      of the bloom, ran into the trees.
   - speaker: 
-    text: I carry her home through the snow. She sleeps the whole way.
+    text: I applied first aid and carried my daughter home. She stayed asleep the
+      entire time.
   - speaker: 
-    text: Hollow Pine makes it through the winter. But some of the houses never light
-      their stoves again.
-  witheringWolf:
+    text: Eventually, the plants fell off, and everyone looked healthier than ever.
   - speaker: 
-    text: The wolf falls without a sound.
+    text: Hollow Pine was allowed a calm winter, knowing the plant was eradicated,
+      but some of the townsfolk would never come back.
   - speaker: 
-    text: Then the vines move. They wrap around her and pull her into the flowers.
+    text: I could've done something differently... I let one of them get away, or
+      I shot something I shouldn't have. I knew it.
   - speaker: 
-    text: I go in after her. Neither of us comes back.
-  witheringDecoy:
+    text: But while drowning in sorrow and booze, I gained a pat on the back, some
+      handshakes, and a genuine smile from my daughter.
   - speaker: 
-    text: The shot echoes over the lake. The wolf doesn't even flinch.
+    text: And I remembered why I did everything.
   - speaker: 
-    text: Then the vines move. They wrap around her and pull her into the flowers.
+    text: All for that.
   - speaker: 
-    text: I go in after her. Neither of us comes back.
+    text: The best reward I could've ever received.
+  withering:
+  - speaker: 
+    text: The wolf fell without a sound.
+  - speaker: 
+    text: Then the vines moved. They wrapped around her and pulled her into the flowers.
+  - speaker: 
+    text: I went in after her.
+  - speaker: 
+    text: The plant allowed me to enter.
+  - speaker: 
+    text: But none of us ever came back.
+  - speaker: 
+    text: Not the same, at least...
   endOfHollowPine:
   - speaker: 
-    text: Winter is silent in Hollow Pine.
+    text: Winter was silent in Hollow Pine.
   - speaker: 
     text: No smoke. No voices. Only flowers, growing through the floorboards.
   - speaker: 
-    text: They found the house in spring, covered in pale blossoms. Nobody was inside.
+    text: Sometimes, you see one of us walking around.
+  - speaker: 
+    text: If you see us, if you hear us, stay away.
+  - speaker: 
+    text: It walks like us, it talks like us, but it's not us.
+  - speaker: 
+    text: It's not human. It is the forest.
+  - speaker: 
+    text: And it already knows our scent.
+  titleLook: {fileID: 11400000, guid: 2fefc1bdb205a2148ad5f239d20e27c1, type: 2}
+  titleMusic: {fileID: 11400000, guid: 81e2f1822bdb7154998c51418a010384, type: 2}
+  plantEndingMusic: {fileID: 11400000, guid: ddebe5e058c5d6b4eaad1ba9858ababc, type: 2}
+  badEndingMusic: {fileID: 11400000, guid: ca2030cd1d63a0c4bbdb77d9b0a60126, type: 2}
   dayCardFormat: Day {0}
   theEnd: The End
-  bulletText: You have 1 bullet
   shootPrompt: '[Left Click] Shoot'
   aimHint: Hold Right Mouse to aim
-  shootHint: Left Click to shoot

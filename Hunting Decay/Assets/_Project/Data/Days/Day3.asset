@@ -16,31 +16,32 @@ MonoBehaviour:
   breakfastHealthy:
     greeting:
     - speaker: Daughter
-      text: Morning! Can you tell me the story of the white stag tonight?
+      text: Morning! You look... pale. Are you okay, papa?
     villageNews:
     - speaker: Daughter
-      text: Hollis says the smokehouse is almost full.
+      text: Hollis says the smokehouse is almost ready for winter.
     - speaker: Daughter
       text: I heard Dr Marsh whistling all the way down the road.
   breakfastInfected:
     greeting:
     - speaker: Daughter
-      text: Morning, Papa.
+      text: Morning, papa.
     - speaker: Daughter
-      text: There's something under my skin, here. Like little roots.
+      text: There's something wrong with me. Help me, please.
     villageNews:
     - speaker: Daughter
-      text: Old Greer says half the village has the fever now.
+      text: Half the village has the fever now. Dr Marsh disappeared.
     - speaker: Daughter
-      text: Hollis coughed up a leaf. A whole green leaf.
+      text: Do we have the bloom, papa?
+    - speaker: Daughter
+      text: Are we dying?
   huntRequest:
   - speaker: Daughter
-    text: The forest feels wrong today. Even the birds are quiet.
+    text: What's going on, papa?
   - speaker: Daughter
     text: Be careful, please.
-  - speaker: Daughter
-    text: If everything is alright out there, could we have deer again?
   scopeNote: 
+  randomSounds: 1
   dinnerHealthy:
     question:
     - speaker: Daughter
@@ -65,27 +66,39 @@ MonoBehaviour:
     - speaker: Daughter
       text: You're home.
     - speaker: Daughter
-      text: The stew is cold. I fell asleep at the table.
+      text: Sorry, papa. I fell asleep at the table.
     replies:
     - text: You need to rest.
       reaction:
       - speaker: Daughter
-        text: I rest all day. I'm still tired.
-    - text: I'll warm it up. Go to bed.
+        text: I feel tired all the time.
+      - speaker: Daughter
+        text: But I feel like if I rest I won't wake up again.
+    - text: We'll deal with this together.
       reaction:
       - speaker: Daughter
-        text: Will you leave the lamp on?
+        text: They tell me you lie.
       - speaker: Daughter
-        text: The roots don't like the light.
+        text: The roots don't like you.
   missedNews:
   - speaker: Daughter
     text: Dr Marsh went into the forest but never came back.
   - speaker: Daughter
     text: Old Greer says without him, nobody knows how to stop the fever.
+  - speaker: Daughter
+    text: The roots tricked you, papa.
   colorFilter: {r: 0.96, g: 0.96, b: 0.94, a: 1}
   temperature: 0
   saturation: -15
   postExposure: -0.05
+  customHuntGrade: 0
+  huntTemperature: 0
+  huntSaturation: 0
+  huntPostExposure: 0
+  foliageHue: 22
+  foliageHueAmount: 1
+  foliageSaturation: 0.6
+  foliageWhiten: 0.15
   weather: 1
   weatherRate: 3
   music: {fileID: 0}

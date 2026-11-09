@@ -34,6 +34,8 @@ namespace HuntingDecay
         readonly List<ZoomReveal> revealed = new();
         // Sound cues of the open photo, like the cave voice. They only run until the shot.
         readonly List<AmbientCue> cues = new();
+        // Set once a photo's HuntMusic replaces the day's music, so the shot can stop it.
+        bool huntMusicPlaying;
         ContactFilter2D targetFilter;
         int day;
         bool isFinalDay;
@@ -122,7 +124,9 @@ namespace HuntingDecay
                 {
                     Shot = current;
                     StopCues();
-                    AudioManager.Instance.Play(gunshotSound);
+                    // A jumpscare target never takes the shot, so there's no gunshot either.
+                    if (!current.Jumpscare.enabled)
+                        AudioManager.Instance.Play(gunshotSound);
                 }
                 yield return null;
             }
@@ -141,6 +145,12 @@ namespace HuntingDecay
             HideRevealed();
             StopCues();
             current = null;
+            AudioManager.Instance.PlayPhotoAmbience(null);
+            if (huntMusicPlaying)
+            {
+                AudioManager.Instance.PlayMusic(null);
+                huntMusicPlaying = false;
+            }
         }
 
         void HideRevealed()
@@ -160,10 +170,17 @@ namespace HuntingDecay
         {
             StopCues();
             viewManager.Show(view);
+            AudioManager.Instance.PlayPhotoAmbience(view.Ambience);
             // Only today's cues: DayVisibility has already turned the others off.
             cues.AddRange(view.GetComponentsInChildren<AmbientCue>());
             foreach (AmbientCue cue in cues)
                 cue.Begin();
+            // Only today's music too. Once started it keeps playing in every photo until the shot.
+            foreach (HuntMusic music in view.GetComponentsInChildren<HuntMusic>())
+            {
+                AudioManager.Instance.PlayMusic(music.Sound);
+                huntMusicPlaying = true;
+            }
         }
 
         void StopCues()

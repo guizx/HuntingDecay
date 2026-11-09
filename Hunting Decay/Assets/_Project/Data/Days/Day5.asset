@@ -16,18 +16,27 @@ MonoBehaviour:
   breakfastHealthy:
     greeting:
     - speaker: 
-      text: Her chair is empty. Last night's stew is untouched.
+      text: Her chair was empty. The door was open.
     - speaker: 
-      text: The door is open. Small footprints lead into the snow, toward the lake.
+      text: The winter wind crept into the house. With it, a stench of something
+        sweet and rotten at the same time.
+    - speaker: 
+      text: It was an invitation from the forest.
     villageNews: []
   breakfastInfected:
     greeting:
     - speaker: 
-      text: Her chair is empty. There are pale petals on her pillow.
+      text: Her chair was empty. The door was open. There were traces of vegetation
+        around the house.
     - speaker: 
-      text: The door is open. Small footprints lead into the snow, toward the lake.
+      text: The winter wind crept into the house. With it, a stench of something
+        sweet and rotten at the same time.
+    - speaker: 
+      text: It was an invitation from the forest. My roots told me to go.
     villageNews: []
   huntRequest: []
+  scopeNote: 
+  randomSounds: 0
   dinnerHealthy:
     question: []
     replies: []
@@ -39,6 +48,14 @@ MonoBehaviour:
   temperature: -40
   saturation: -35
   postExposure: -0.2
+  customHuntGrade: 1
+  huntTemperature: 0
+  huntSaturation: 0
+  huntPostExposure: 0
+  foliageHue: 22
+  foliageHueAmount: 1
+  foliageSaturation: 0.1
+  foliageWhiten: 0.65
   weather: 2
   weatherRate: 45
   music: {fileID: 0}

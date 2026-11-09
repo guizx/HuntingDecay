@@ -16,34 +16,44 @@ MonoBehaviour:
   breakfastHealthy:
     greeting:
     - speaker: Daughter
-      text: Morning! I dreamed about Mama. She was singing.
+      text: I dreamed about mama. She was singing.
     villageNews:
     - speaker: Daughter
-      text: Hollis gave me a bone for the stew.
+      text: Hollis says Hollow Pine will make it through the winter.
     - speaker: Daughter
-      text: He says Hollow Pine will make it through the winter.
+      text: But I'm not sure...
+    - speaker: Daughter
+      text: Papa...
   breakfastInfected:
     greeting:
     - speaker: Daughter
       text: Morning...
     - speaker: Daughter
-      text: The roots reached my neck. I covered them with Mama's scarf.
+      text: I need water, papa.
     villageNews:
     - speaker: Daughter
       text: The fever is in every house now.
     - speaker: Daughter
       text: Greer won't open her door anymore.
+    - speaker: Daughter
+      text: Papa...
   huntRequest:
   - speaker: Daughter
-    text: Papa... something keeps calling me from the woods. At night.
+    text: There are people calling me from the woods.
   - speaker: Daughter
-    text: It knows my name.
+    text: They know my name.
   - speaker: Daughter
-    text: Please hunt today. And come back.
+    text: They have mama's voice.
+  - speaker: Daughter
+    text: I'm scared.
+  - speaker: Daughter
+    text: Please come back today.
+  scopeNote: 
+  randomSounds: 1
   dinnerHealthy:
     question:
     - speaker: Daughter
-      text: The voice stopped tonight.
+      text: One of the voices stopped tonight.
     - speaker: Daughter
       text: Did you do something?
     replies:
@@ -53,42 +63,46 @@ MonoBehaviour:
         text: I knew you would.
       - speaker: Daughter
         text: You always do.
+      - speaker: Daughter
+        text: Please hunt the rest. They came inside while you were away.
     - text: Don't go into the woods. Promise me.
       reaction:
       - speaker: Daughter
         text: I promise.
-      - speaker: Daughter
-        text: ...I still hear it sometimes. Very quietly.
   dinnerInfected:
     question:
     - speaker: Daughter
-      text: You're late.
-    - speaker: Daughter
-      text: Someone knocked on the door three times. Nobody was there.
+      text: There was a monster at the window.
     replies:
     - text: Lock the door tonight.
       reaction:
       - speaker: Daughter
         text: I did.
       - speaker: Daughter
-        text: The roots opened it anyway.
+        text: They said I'm next.
     - text: Come here. I'm home now.
       reaction:
       - speaker: Daughter
         text: You're so warm.
       - speaker: Daughter
-        text: I'm cold all the time, Papa.
+        text: I'm cold all the time, papa.
   missedNews:
   - speaker: Daughter
-    text: Someone was screaming near the cave today. Then it stopped.
+    text: Hollis went missing.
   - speaker: Daughter
-    text: The Pell boy went looking for his father.
-  - speaker: Daughter
-    text: Neither of them came home.
+    text: Do you know where he is?
   colorFilter: {r: 0.9, g: 0.95, b: 1, a: 1}
   temperature: -20
   saturation: -25
   postExposure: -0.1
+  customHuntGrade: 0
+  huntTemperature: 0
+  huntSaturation: 0
+  huntPostExposure: 0
+  foliageHue: 22
+  foliageHueAmount: 1
+  foliageSaturation: 0.3
+  foliageWhiten: 0.4
   weather: 2
   weatherRate: 18
   music: {fileID: 0}

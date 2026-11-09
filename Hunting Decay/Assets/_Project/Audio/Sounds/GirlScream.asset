@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GirlScream
   m_EditorClassIdentifier: Assembly-CSharp::HuntingDecay.Sound
   clips:
-  - {fileID: 8300000, guid: be37e7ae33058af4d856e04e98ae060c, type: 3}
+  - {fileID: 8300000, guid: 132c803443172ba40919827465f4f77a, type: 3}
   volume: 1
   pitch: 1
   pitchVariation: 0

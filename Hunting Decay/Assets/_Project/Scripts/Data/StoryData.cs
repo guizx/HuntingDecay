@@ -22,6 +22,17 @@ namespace HuntingDecay
         public List<DialogueLine> withering = new();
         public List<DialogueLine> endOfHollowPine = new();
 
+        [Header("Title")]
+        [Tooltip("The day whose grade and foliage colors the title screen uses.")]
+        public DayData titleLook;
+        public Sound titleMusic;
+
+        [Header("Ending music")]
+        [Tooltip("Both Happy Winter endings, after shooting the plant.")]
+        public Sound plantEndingMusic;
+        [Tooltip("Withering and The End of Hollow Pine.")]
+        public Sound badEndingMusic;
+
         [Header("Interface")]
         public string dayCardFormat = "Day {0}";
         public string theEnd = "The End";

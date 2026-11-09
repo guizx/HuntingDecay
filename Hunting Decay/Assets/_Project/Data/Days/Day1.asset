@@ -21,29 +21,35 @@ MonoBehaviour:
     villageNews: []
   huntRequest: []
   scopeNote: You have 1 bullet
+  randomSounds: 1
   dinnerHealthy:
     question:
     - speaker: Daughter
-      text: You're back! I kept the stew warm.
+      text: You're back! Venison stew, yay!
     - speaker: Daughter
-      text: How was the forest today, Papa?
+      text: Thank you, papa!
+    - speaker: Daughter
+      text: How was the forest today?
     replies:
-    - text: Quiet. Too quiet.
-      reaction:
-      - speaker: Daughter
-        text: Quiet is good, right? Quiet means nothing is chasing you.
-    - text: I saw something I can't explain.
+    - text: It was weird. I saw something I can't explain.
       reaction:
       - speaker: Daughter
         text: Like a ghost?
       - speaker: Daughter
-        text: ...Tell me tomorrow. You look tired.
+        text: ...You look tired, papa. Tell me tomorrow, okay?
+    - text: There was a deer with plants for eyes.
+      reaction:
+      - speaker: Daughter
+        text: Plants for eyes? Really?
+      - speaker: Daughter
+        text: ...Are you okay, papa? You look tired. Rest a little, tell me more
+          about it later.
   dinnerInfected:
     question:
     - speaker: Daughter
       text: You're back.
     - speaker: Daughter
-      text: I'm not very hungry tonight, Papa.
+      text: I'm not very hungry tonight, papa.
     replies:
     - text: Are you feeling alright?
       reaction:
@@ -58,6 +64,10 @@ MonoBehaviour:
   temperature: 25
   saturation: 5
   postExposure: 0
+  foliageHue: 35
+  foliageHueAmount: 1
+  foliageSaturation: 1.25
+  foliageWhiten: 0
   weather: 1
   weatherRate: 14
   music: {fileID: 0}

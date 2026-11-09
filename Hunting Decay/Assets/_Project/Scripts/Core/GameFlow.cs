@@ -36,9 +36,9 @@ namespace HuntingDecay
         [SerializeField, Min(0f)] float dayCardHold = 1.2f;
         [Tooltip("How long the shot's white flash takes to fade into black.")]
         [SerializeField, Min(0f)] float flashToBlackDuration = 1f;
-        [Tooltip("The short flash before a jumpscare.")]
-        [SerializeField, Min(0f)] float flashDuration = 0.06f;
         [SerializeField, Min(0f)] float jumpscareHold = 0.9f;
+        [Tooltip("How long lingering effects, like a scope sound or the jumpscare, take to fade out when the house appears.")]
+        [SerializeField, Min(0f)] float lingeringSoundFade = 0.8f;
 
         public GameState State => state;
 
@@ -57,7 +57,7 @@ namespace HuntingDecay
             fader.SetBlack(true);
             state.Set(1, 0);
             ApplyState();
-            atmosphere.ApplyNeutral();
+            atmosphere.ApplyTitle(story.titleLook, story.titleMusic);
             viewManager.Show(titleView);
             title.Show();
             pauseMenu.CanPause = false;
@@ -83,6 +83,7 @@ namespace HuntingDecay
         {
             yield return fader.FadeToBlack(fadeDuration);
             title.Hide();
+            atmosphere.StopWeather();
             HideGameInterface();
 
             while (true)
@@ -130,8 +131,7 @@ namespace HuntingDecay
 
         IEnumerator PlayBreakfast(DayData day)
         {
-            houseView.SetScene(HouseScene.Breakfast);
-            viewManager.Show(houseView);
+            ShowHouse(HouseScene.Breakfast);
             yield return fader.FadeFromBlack(fadeDuration);
 
             Breakfast breakfast = state.MissedAnomalies == 0 ? day.breakfastHealthy : day.breakfastInfected;
@@ -153,8 +153,8 @@ namespace HuntingDecay
         {
             if (hit.Jumpscare.enabled)
             {
-                // The only exception to the fade: the face jumps on screen and cuts straight to dinner.
-                yield return fader.Flash(flashDuration);
+                // No shot at all: the face is on screen the moment the player clicks, then it cuts to dinner.
+                hunt.Stop();
                 yield return jumpscare.Play(hit.Jumpscare, jumpscareHold);
                 fader.SetBlack(true);
                 jumpscare.Hide();
@@ -162,15 +162,15 @@ namespace HuntingDecay
             else
             {
                 yield return fader.FlashToBlack(flashToBlackDuration);
+                hunt.Stop();
             }
-            hunt.Stop();
             atmosphere.LeaveForest();
         }
 
         IEnumerator PlayDinner(Dinner dinner, List<DialogueLine> news)
         {
-            houseView.SetScene(HouseScene.Dinner);
-            viewManager.Show(houseView);
+            ShowHouse(HouseScene.Dinner);
+            atmosphere.SetNight(true);
             yield return fader.FadeFromBlack(fadeDuration);
 
             yield return dialogue.Play(dinner.question);
@@ -179,6 +179,7 @@ namespace HuntingDecay
             yield return dialogue.Play(dinner.replies[choice].reaction.Concat(news));
             dialogue.Hide();
             yield return fader.FadeToBlack(fadeDuration);
+            atmosphere.SetNight(false);
         }
 
         IEnumerator PlayEnding(Ending ending)
@@ -189,17 +190,21 @@ namespace HuntingDecay
                 case Ending.HappyWinter:
                     endingView.ShowHappyWinter();
                     viewManager.Show(endingView);
+                    atmosphere.ApplyHuntGrade();
                     lines = state.MissedAnomalies == 0 ? story.happyWinter : story.happyWinterWithLoss;
+                    AudioManager.Instance.PlayMusic(story.plantEndingMusic);
                     break;
                 case Ending.Withering:
                     endingView.ShowWithering();
                     viewManager.Show(endingView);
+                    atmosphere.ApplyHuntGrade();
                     lines = story.withering;
+                    AudioManager.Instance.PlayMusic(story.badEndingMusic);
                     break;
                 default:
-                    houseView.SetScene(HouseScene.Overgrown);
-                    viewManager.Show(houseView);
+                    ShowHouse(HouseScene.Overgrown);
                     lines = story.endOfHollowPine;
+                    AudioManager.Instance.PlayMusic(story.badEndingMusic);
                     break;
             }
 
@@ -211,6 +216,13 @@ namespace HuntingDecay
             yield return dialogue.WaitForClick();
             fader.ClearCard();
             ShowTitle();
+        }
+
+        void ShowHouse(HouseScene scene)
+        {
+            AudioManager.Instance.FadeOutEffects(lingeringSoundFade);
+            houseView.SetScene(scene);
+            viewManager.Show(houseView);
         }
 
         void ApplyState()
